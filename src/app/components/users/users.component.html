@@ -1,24 +1,26 @@
-<div *ngIf="users?.length > 0;else noUsers">
-  <ul *ngFor="let user of users" class="collection">
-    <li class="collection-item"><strong>{{user.name}}:</strong> {{user.email}} <a href="#" class="secondary-content">
-      <i (click)="editUser($event, user)" class="fa fa-pencil"></i>
-      <i *ngIf="editState && userToEdit.id == user.id" (click)="clearState()" class="fa fa-compress"></i>
+<div *ngIf="bookmarks?.length > 0;else noBookmarks">
+  <ul *ngFor="let bookmark of bookmarks" class="collection">
+    <li class="collection-item"><p><strong>Product name:</strong> {{bookmark.prodname}}</p> 
+    <p><strong>Price: </strong>{{bookmark.price}} </p>
+    <a href="{{bookmark.url}}">Link</a> <a href="#" class="secondary-content">
+      <i (click)="editBookmark($event, bookmark)" class="fa fa-pencil"></i>
+      <i *ngIf="editState && bookmarkToEdit.id == bookmark.id" (click)="clearState()" class="fa fa-compress"></i>
       </a>
       
-      <div *ngIf="editState && userToEdit.id == user.id">
-        <form (ngSubmit)="updateUser(user)">
+      <div *ngIf="editState && bookmarkToEdit.id == bookmark.id">
+        <form (ngSubmit)="updateBookmark(bookmark)">
           <div class="row">
             <div class="input-field col s4">
-              <input type="text" placeholder="Add Name" [(ngModel)]="user.name" name="name">
+              <input type="text" placeholder="Edit Product Name" [(ngModel)]="bookmark.prodname" name="prodname">
             </div>
             <div class="input-field col s4">
-              <input type="text" placeholder="Add Email" [(ngModel)]="user.email" name="email">
+              <input type="text" placeholder="Edit Price" [(ngModel)]="bookmark.price" name="price">
             </div>
             <div class="input-field col s4">
-              <input type="text" placeholder="Add Password" [(ngModel)]="user.password" name="password">
+              <input type="text" placeholder="Edit Url" [(ngModel)]="bookmark.url" name="url">
             </div>
-            <input type="submit" value="Update User" class="btn orange">
-            <button class="btn red" (click)="deleteUser($event, user)" >Delete User</button>
+            <input type="submit" value="Update Bookmark" class="btn orange">
+            <button class="btn red" (click)="deleteBookmark($event, bookmark)" >Delete Bookmark</button>
           </div>
         </form>
       </div>
@@ -27,7 +29,7 @@
   </ul>
 </div>
 
-<ng-template #noUsers>
+<ng-template #noBookmarks>
   <hr>
-  <h5>There are no Users to list</h5>
+  <h5>There are no Bookmarks to list</h5>
 </ng-template>

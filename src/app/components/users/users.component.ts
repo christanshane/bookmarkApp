@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { User } from '../../models/user';
+import { Bookmark } from '../../models/bookmark';
 
 @Component({
   selector: 'app-users',
@@ -8,37 +8,37 @@ import { User } from '../../models/user';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  users: User[];
+  bookmarks: Bookmark[];
   editState: boolean = false;
-  userToEdit: User;
+  bookmarkToEdit: Bookmark;
 
 
   constructor(public userService: UserService) { }
 
   ngOnInit() {
-     this.userService.getUsers().subscribe(users => {
+     this.userService.getBookmarks().subscribe(bookmarks => {
       //  console.log(users);
-       this.users = users;
+       this.bookmarks = bookmarks;
      });
   }
 
-  deleteUser(event, user: User){
+  deleteBookmark(event, bookmark: Bookmark){
     this.clearState();
-    this.userService.deleteUser(user);
+    this.userService.deleteBookmark(bookmark);
   }
 
-  editUser(event, user: User){
+  editBookmark(event, bookmark: Bookmark){
     this.editState = true;
-    this.userToEdit = user;
+    this.bookmarkToEdit = bookmark;
   }
 
   clearState(){
     this.editState = false;
-    this.userToEdit = null;
+    this.bookmarkToEdit = null;
   }
 
-  updateUser(user: User){
-    this.userService.updateUser(user);
+  updateBookmark(bookmark: Bookmark){
+    this.userService.updateBookmark(bookmark);
     this.clearState();
   }
 

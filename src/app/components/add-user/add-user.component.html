@@ -1,19 +1,19 @@
 <div class="card">
   <div class="card-content">
-    <span class="card-title">Add User</span>
+    <span class="card-title">Add Bookmark</span>
     <form (ngSubmit)="onSubmit()" class="col s6">
       <div class="row">
         <div class="input-field col s4">
-          <input type="text" placeholder="Add Name" [(ngModel)]="user.name" name="name">
-          <label>Name</label>
+          <input type="text" placeholder="Add Product Name" [(ngModel)]="bookmark.prodname" name="prodname">
+          <label>Product Name</label>
         </div>
         <div class="input-field col s4">
-          <input type="text" placeholder="Add Email" [(ngModel)]="user.email" name="email">
-          <label>Email</label>
+          <input type="text" placeholder="Add Price" [(ngModel)]="bookmark.price" name="price">
+          <label>Price</label>
         </div>
         <div class="input-field col s4">
-          <input type="text" placeholder="Add Password" [(ngModel)]="user.password" name="password">
-          <label>Password</label>
+          <input type="text" placeholder="Add Url" [(ngModel)]="bookmark.url" name="url">
+          <label>Url</label>
         </div>
         <input type="submit" value="Submit" class="btn">
       </div>
